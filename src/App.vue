@@ -1,10 +1,5 @@
 <template>
   <v-app>
-    <v-app-bar app color="black" dark>
-      <v-toolbar-title style="margin: 0 auto; font-size: 2.5rem;">
-        Order Checking
-      </v-toolbar-title>
-    </v-app-bar>
 
     <v-main>
       <LoginScreen></LoginScreen>
@@ -23,7 +18,8 @@ export default {
   },
 
   data: () => ({
-    //
+    //Globally stored
+
   }),
 };
 </script>
