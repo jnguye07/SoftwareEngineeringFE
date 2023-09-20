@@ -4,12 +4,12 @@
             <v-toolbar-title style="margin: 0 auto; font-size: 2.5rem;">
                 Order Checking
             </v-toolbar-title>
-            <v-btn @click="reset">Logout</v-btn>
+            <v-btn v-if="!showForm" @click="reset">Logout</v-btn>
         </v-app-bar>
 
         <v-card v-if="showForm" class="mx-auto px-6 py-8" max-width="344">
             <v-form v-model="form" @submit.prevent="">
-                <h1>User Login</h1>
+                <h1 style="text-align: center;">User Login</h1>
                 <v-text-field v-model="email" :readonly="loading" class="mb-2" clearable label="Username"></v-text-field>
 
                 <v-text-field type="password" v-model="password" :readonly="loading" clearable label="Password"
