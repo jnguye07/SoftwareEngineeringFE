@@ -43,7 +43,7 @@ export default {
     methods: {
         loadIn() {
             this.users.set("ivan", "pass123");
-            this.users.set("justin", "pass1234");
+            this.users.set("joseph", "pass1234");
         },
         onSubmit() {
             var temp = this.email;
