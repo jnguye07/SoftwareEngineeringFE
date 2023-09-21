@@ -1,6 +1,5 @@
 <template>
-  <v-app>
-
+  <v-app  style="background-color: #193441;">
     <v-main>
       <LoginScreen></LoginScreen>
     </v-main>
@@ -18,8 +17,7 @@ export default {
   },
 
   data: () => ({
-    //Globally stored
-
+    // Globally stored data
   }),
 };
 </script>

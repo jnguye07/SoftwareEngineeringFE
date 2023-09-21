@@ -1,35 +1,41 @@
-<template >
-    <v-sheet class="bg-deep-purple pa-12" rounded>
-        <v-app-bar app color="black" dark>
-            <v-toolbar-title style="margin: 0 auto; font-size: 2.5rem;">
+<template>
+    <v-sheet class="pa-12" rounded style="background: #193441">
+        <v-app-bar app style="background-color: #34424D;" dark>
+            <v-toolbar-title style="margin: 0 auto; font-size: 2.5rem; color: #f5f5f5;">
                 Order Checking
             </v-toolbar-title>
-            <v-btn v-if="!showForm" @click="reset">Logout</v-btn>
+            <v-btn v-if="!showForm" @click="reset" color="error">
+                Logout
+            </v-btn>
         </v-app-bar>
 
-        <v-card v-if="showForm" class="mx-auto px-6 py-8" max-width="344">
+        <v-card v-if="showForm" class="mx-auto px-6 py-8" style="background-color: #f5f5f5;" width="40rem" height="20rem"
+            rounded>
             <v-form v-model="form" @submit.prevent="">
-                <h1 style="text-align: center;">User Login</h1>
-                <v-text-field v-model="email" :readonly="loading" class="mb-2" clearable label="Username"></v-text-field>
+                <h1 style="text-align: center; color: #193441;">Login</h1>
+                <v-text-field v-model="email" :readonly="loading" class="mb-2" clearable label="Username"
+                    style="color: #193441; background-color: #f5f5f5;"></v-text-field>
 
                 <v-text-field type="password" v-model="password" :readonly="loading" clearable label="Password"
-                    placeholder="Enter your password"></v-text-field>
+                    placeholder="Enter your password" style="color: #193441; background-color: #f5f5f5;"></v-text-field>
 
                 <br>
 
                 <v-btn @click="onSubmit" :disabled="!form" :loading="loading" block color="success" size="large"
-                    type="submit" variant="elevated">
+                    type="submit" variant="elevated" style="background-color: #193441;">
                     Sign In
                 </v-btn>
             </v-form>
         </v-card>
 
+
         <v-snackbar v-model="snackbar" :timeout="timeout" color="error">
             {{ errorMessage }}
         </v-snackbar>
 
-        <v-data-table v-if="!showForm" :headers="headers" :items="values" :items-per-page="5"
-            class="elevation-1"></v-data-table>
+        <v-data-table v-if="!showForm" :headers="headers" :items="values" :items-per-page="5" class="elevation-1"
+            style="background-color: #d1dbbd; color: #193441;"></v-data-table>
+
 
     </v-sheet>
 </template>
@@ -78,7 +84,7 @@ export default {
         },
         reset() {
             this.showForm = !this.showForm;
-            this.values.splice(0,this.values.length);
+            this.values.splice(0, this.values.length);
         },
         loadIn() {
             this.users.set("ivan", "pass123");
