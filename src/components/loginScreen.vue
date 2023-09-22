@@ -34,7 +34,7 @@
         </v-snackbar>
 
         <v-data-table v-if="!showForm" :headers="headers" :items="values" :items-per-page="5" class="elevation-1"
-            style="background-color: #d1dbbd; color: #193441;"></v-data-table>
+            style="background-color: #f5f5f5; color: #193441;"></v-data-table>Wel
 
 
     </v-sheet>
