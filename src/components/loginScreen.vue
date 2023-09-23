@@ -33,7 +33,7 @@
             {{ errorMessage }}
         </v-snackbar>
 
-        <v-data-table v-if="!showForm" :headers="headers" :items="values" :items-per-page="5" class="elevation-1"
+        <v-data-table v-if="!showForm" :headers="headers" :items="orders" :items-per-page="5" class="elevation-1"
             style="background-color: #f5f5f5; color: #193441;"></v-data-table>
 
 
@@ -41,8 +41,8 @@
 </template>
 
 <script>
-import ivanOrderHistory from '../ivanOrderHistory.json'
-import josephOrderHistory from '../josephOrderHistory.json'
+import orderService from '../services/orderService'
+
 export default {
 
     data: () => ({
@@ -67,20 +67,16 @@ export default {
             { text: "Quantity", value: "qty" },
             { text: "Total Cost", value: "totalCost" },
         ],
-        values: []
+
+
+        orders: []
     }),
 
     methods: {
-        printEm(temp) {
-            if (temp === 'ivan') {
-                ivanOrderHistory.orderHistory.forEach((element) => {
-                    this.values.push(element)
-                })
-            } else {
-                josephOrderHistory.orderHistory.forEach((element) => {
-                    this.values.push(element)
-                })
-            }
+        getOrders() {
+            orderService.getOrders().then((Response) =>{
+                this.orders = Response.data
+            })
         },
         reset() {
             this.showForm = !this.showForm;
@@ -101,7 +97,7 @@ export default {
                     setTimeout(() => (this.showForm = false), 1000);
                     setTimeout(() => (this.loading = false), 500);
                     console.log(temp);
-                    this.printEm(temp);
+                    this.getOrders();
                 } else {
                     this.snackbar = true;
                     this.loading = true;
