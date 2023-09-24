@@ -42,7 +42,7 @@
 
 <script>
 import orderService from '../services/orderService'
-
+import userSerice from '../services/userService'
 export default {
 
     data: () => ({
@@ -74,13 +74,13 @@ export default {
 
     methods: {
         getOrders() {
-            orderService.getOrders().then((Response) =>{
+            orderService.getOrders().then((Response) => {
                 this.orders = Response.data
             })
         },
         reset() {
             this.showForm = !this.showForm;
-            this.values.splice(0, this.values.length);
+            this.orders.splice(0, this.orders.length);
         },
         loadIn() {
             this.users.set("ivan", "pass123");
@@ -90,19 +90,14 @@ export default {
             var temp = this.email;
             temp = temp.toLowerCase();
             temp = temp.replace(/\s/g, '');
-            if (this.users.has(temp)) {
-                if (this.users.get(temp) == this.password) {
-                    this.email = "";
-                    this.password = "";
-                    setTimeout(() => (this.showForm = false), 1000);
-                    setTimeout(() => (this.loading = false), 500);
-                    console.log(temp);
-                    this.getOrders();
-                } else {
-                    this.snackbar = true;
-                    this.loading = true;
-                    setTimeout(() => (this.loading = false), 500);
-                }
+            const check = userSerice.getUsers(temp, this.password);
+            console.log(check);
+            if (check) {
+                this.email = "";
+                this.password = "";
+                setTimeout(() => (this.showForm = false), 1000);
+                setTimeout(() => (this.loading = false), 500);
+                this.getOrders();
             } else {
                 this.snackbar = true;
                 this.loading = true;
