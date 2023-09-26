@@ -171,9 +171,11 @@ export default {
         sortable: false,
         value: "orderId",
       },
-      { text: "Creation Date", value: "creationDate" },
+      { text: "Order Date", value: "orderDate" },
+      { text: "Delivery Date", value: "deliveryDate" },
       { text: "Quantity", value: "qty" },
-      { text: "Total Cost", value: "totalCost" },
+      { text: "Total Cost", value: "cost" },
+      
     ],
     orders: [],
   }),
@@ -184,6 +186,7 @@ export default {
     },
     getOrders() {
       orderService.getOrders().then((Response) => {
+        console.log("reponse" , Response)
         this.orders = Response.data;
       });
     },
