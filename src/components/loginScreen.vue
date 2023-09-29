@@ -80,6 +80,8 @@
 <script>
 import orderService from '../services/orderService'
 import userService from '../services/userService'
+
+
 export default {
 
     data: () => ({
@@ -99,16 +101,18 @@ export default {
         newPassword: "",
 
         headers: [
-            {
-                text: "Order ID",
-                align: "start",
-                sortable: false,
-                value: "orderId",
-            },
-            { text: "Creation Date", value: "creationDate" },
-            { text: "Quantity", value: "qty" },
-            { text: "Total Cost", value: "totalCost" },
-        ],
+      {
+        text: "Order ID",
+        align: "start",
+        sortable: false,
+        value: "orderId",
+      },
+      { text: "Order Date", value: "orderDate" },
+      { text: "Delivery Date", value: "deliveryDate" },
+      { text: "Quantity", value: "quantity" },
+      { text: "Total Cost", value: "cost" },
+
+    ],
         orders: []
     }),
 
@@ -134,6 +138,7 @@ export default {
             this.firstname = "";
         },
         onSubmit() {
+            this.component = 'order-screen';
             console.log(this.email);
             var temp = this.email;
             temp = temp.toLowerCase();
@@ -176,3 +181,4 @@ export default {
     },
 }
 </script>
+

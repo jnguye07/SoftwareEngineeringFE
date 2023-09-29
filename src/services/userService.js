@@ -17,7 +17,7 @@ class userService {
                     something = false;
                 }
             }).catch(error => {
-                console.error("Error:", error);
+                console.error("Error:", error.response.data);
                 return false;
             });
         if (something == true) {
